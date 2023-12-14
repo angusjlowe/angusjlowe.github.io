@@ -13,8 +13,8 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 order: 1
 ---
-I am a PhD student at the <a href="https://physics.mit.edu/research/labs-centers/center-for-theoretical-physics/">Center for Theoretical Physics</a> at MIT. My primary interests lie in quantum computation, quantum complexity, and learning theory.
+I am a PhD student at the <a href="https://physics.mit.edu/research/labs-centers/center-for-theoretical-physics/">Center for Theoretical Physics</a> at MIT. My primary interests lie in quantum information and related areas, particularly quantum algorithms, learning properties of quantum states, and complexity.
 
-Before MIT, I completed a BSc in physics and computer science at the University of Edinburgh and an MMATH at the University of Waterloo. Apart from my research I enjoy playing basketball, practicing saxophone, and travelling whenever I can.
+Before MIT, I completed a BSc in computer science and physics at the University of Edinburgh and an MMATH at the University of Waterloo. I was also a quantum algorithms researcher at <a href="https://www.xanadu.ai/">Xanadu</a>.
 
 <a href="assets/pdf/cv.pdf">CV</a>

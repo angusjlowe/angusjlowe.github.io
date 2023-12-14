@@ -16,20 +16,20 @@ order: 2
 </div>
 
 <div class="publications">
-<h3>Preprints</h3>
+<h3>Journal Publications</h3>
 {% for y in page.years %}
   <h2 class="year">{{y}}</h2>
-  {% bibliography -f papers -q @*[year={{y}},preprint,ord=1]* %}
-  {% bibliography -f papers -q @*[year={{y}},preprint,ord=0]* %}
+  {% bibliography -f papers -q @*[year={{y}},publisher]* %}
 {% endfor %}
 
 </div>
 
 <div class="publications">
-<h3>Journal Publications</h3>
+<h3>Preprints</h3>
 {% for y in page.years %}
   <h2 class="year">{{y}}</h2>
-  {% bibliography -f papers -q @*[year={{y}},publisher]* %}
+  {% bibliography -f papers -q @*[year={{y}},preprint,ord=1]* %}
+  {% bibliography -f papers -q @*[year={{y}},preprint,ord=0]* %}
 {% endfor %}
 
 </div>
