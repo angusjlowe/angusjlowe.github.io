@@ -17,4 +17,6 @@ I am a PhD student at the <a href="https://physics.mit.edu/research/labs-centers
 
 Before MIT, I completed a BSc in computer science and physics at the University of Edinburgh and an MMATH at the University of Waterloo. I was also a quantum algorithms researcher at <a href="https://www.xanadu.ai/">Xanadu</a>.
 
+Apart from research I enjoy playing basketball, skiing, and 
+
 <a href="assets/pdf/cv.pdf">CV</a>
