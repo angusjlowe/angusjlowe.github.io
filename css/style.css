@@ -1,0 +1,64 @@
+body {
+    font: "Open Sans", sans-serif;
+    font-weight: 350;
+}
+
+h1 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    padding-bottom: 0.2em;
+}
+
+h2 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    padding-bottom: 0.2em;
+}
+
+h4 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    padding-bottom: 0.2em;
+    font-style: italic;
+}
+
+ul
+{   
+  list-style-type: none;
+  margin: 0; padding: 0;
+
+}
+
+a {
+    color: #5a6ae1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+weak {
+    font-style: italic;
+    color: grey;
+}
+
+li {
+    padding-bottom: 1em;
+}
+
+.collapseTitle {
+    text-decoration: none;
+    color: black;
+}
+
+.collapseTitle:hover {
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
