@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Angus Lowe is a PhD student in physics at MIT focusing on quantum information science.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <title>Angus Lowe | MIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/academicons.min.css"/>
+</head>
+
+
+<body>
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <a href="../../folklore.html">Back</a>
+                <hr>
+
+                <h1 style="text-align: center;">Modern Quantum Error Correcting Conditions</h1>
+                <p>
+                    We can explain the criteria for quantum error correction<sup><a href="#klqec">1</a></sup> starting from simple classical ideas and then promoting them to their quantum counterparts. This is my preferred rendition of the story because it contains a number of threads which you can follow to explore other fundamental results in information theory, quantum and otherwise. It is also a tale that aligns with modern teachings (in my experience), and makes explicit the connection to classical error correction.
+                </p>
+
+                <h2>Classical error correction</h2>
+                <p>
+                    Let’s focus on getting criteria for classical error correction for now. First, we need to define what it means to perform error correction. Suppose we define the task naively as reproducing some initial classical state (probability vector) after some noise (a stochastic map) acts on it. We could set as our metric for success the total variation distance between initial and final states. What’s wrong with this picture? Well, it doesn’t capture what we mean by error correction: one option would be to just ignore the corrupted message entirely and replace it with some independent but identically distributed random variable, which “succeeds“ at this task. Clearly, we need to define the task another way, one that captures the idea of decoding the message that was actually sent. This can be accomplished with a different picture:
+                </p>
+
+                <img src="img/qec_fig_1.svg" alt="qec_fig_1" style="display:block;width:35em;margin-left:auto;margin-right:auto;">
+                <div style="text-align:center;font-size:small;">Figure 1: Purified version of a classical error correction task.</div>
+                <br>
+                <p>
+                    We have introduced a reference system “R”, and the correct version of the task is to demand that the decoding procedure preserves correlations with R. Namely, if the initial state is (using the letter “e” to denote unit vectors)
+                    $$
+                    \textsf{corr}_{RA} = \frac{1}{2^k}\sum_{x\in\{0,1\}^k}\textsf{e}_x\otimes \textsf{e}_x\in \left(\mathbb{R}^{\{0,1\}^k}\right)^{\otimes 2}
+                    $$
+                    we want the final state to satisfy
+                    $$
+                    \textsf{corr}^\prime_{RA^\prime} = \textsf{corr}_{RA}.
+                    $$
+                    The system \(R\) knows the true value of the message that was sent, and if the decoding procedure is successful, it better output a message that matches that value. If instead,
+                    $$
+                    \textnormal{TV}(\textsf{corr}^\prime_{RA^\prime},\textsf{corr}_{RA}) = \epsilon
+                    $$
+                    that would be a reasonable definition for “approximate” error correction.
+                </p>
+                <p>
+                    That explains R, but what about E? This system is motivated by the following observation: Random, classical noise can be “purified” to <i>permutations</i> acting on a larger system, where the new system may start in a random state. That’s why we have used the letter “P“ for these operations. In physics, you might say we are coupling the system to a bath, or <i>environment</i>. That environment will contain information about which permutations are applied, and to get an arbitrary noise process (stochastic map) acting on the classical message we can discard the environment, or marginalize. You might think of the environment as containing information about the full syndrome of the noise, that would allow for the correct diagnosis every time if only we could see it. In another context, we might say this is the memory of a demon. We can therefore always express an irreversible noise process in the form that appears thrice in Figure 1.
+                </p>
+                <p>
+                    Our intuition is then as follows. Perfect error correction ought to be possible whenever the register B contains all the information stored in R. In turn, this is true if and only if
+                    $$
+                    \mathrm{I}(R:E|B)_{\textsf{p}} = 0
+                    $$
+                    at least, in the setting we have described above. In words, we want the environment to not have any information about the reference system besides what is already contained in the system B.
+                </p>
+                <p>
+                    Why does that condition suffice? Well if it is satisfied, we can cook up an explicit procedure. First note the intermediate state in Figure 1 is necessarily of the form
+                    $$
+                    \textsf{p}_{BRE} = \sum_{b}\textsf{p}_B(b)\left(\textsf{e}_b\otimes \textsf{p}_{R|B=b}\otimes \textsf{p}_{E|B=b} \right).
+                    $$
+                    Now consider a recovery procedure that only acts on B. It starts by looking at the content of the B register without disturbing it and, conditioned on the value it sees, prepares the appropriate state in a new environment:
+                    $$
+                    \textsf{e}_b\mapsto \textsf{e}_b\otimes \textsf{p}_{E|B=b}.
+                    $$
+                    Then this procedure has exactly reproduced the state prior to discarding the information in E, and we can do a final step of running the noise permutation in reverse to get the initial, perfectly correlated state (after the encoding), without touching the reference system.
+                </p>
+                <h2>Quantum error correction</h2>
+                <img src="img/qec_fig_2.svg" alt="qec_fig_2" style="display:block;width:35em;margin-left:auto;margin-right:auto;">
+                <div style="text-align:center;font-size:small;">Figure 2: The “purified“ version of the defining task in quantum error correction.</div>
+                <br>
+                <p>
+                    Two aspects of the above explanation change in the quantum picture, depicted above. First all states and processes are converted to their natural quantum analogues: the perfectly correlated state is now maximally entangled across the subspaces spanned by the codewords; the environment is in some quantum state initially; and the reversible classical dynamics become unitary. Second, the quantum error correction condition<sup><a href="#ns1996qec">2</a></sup> becomes
+                    $$
+                    \mathrm{I}(R:E)_{\psi} = 0
+                    $$
+                    without any conditioning. Besides conditioning being a subtle concept quantumly, there is an obvious reason for the change: we cannot simply peer into the register B without disturbing it, or copy its contents (no-cloning). Therefore, we now want the environment to not have any information about R, regardless of B. Quantum states are more delicate: any leakage to the environment at all is bad news.
+                <p>    
+                    What is the new procedure that we get when the above condition on the mutual information is satisfied? The explicit procedure comes from the observation that we must have an intermediate mixed state of the form
+                    $$
+                    \textnormal{tr}_B(|\psi\rangle\langle\psi|) = \frac{I}{2^k}\otimes \rho_E.
+                    $$
+                    As an aside, you can check that this is equivalent to the more common <a target="_blank" href="https://errorcorrectionzoo.org/c/qecc_finite">version</a> of the quantum error correcting conditions,
+                    $$
+                    \langle\bar{i}|E_a^\dagger E_b|\bar{j}\rangle = \delta_{ij}(\rho_E)_{ab}
+                    $$
+                    where \(\{|\bar{i}\rangle\}\) is some orthonormal basis for the code subspace and \(\{E_a\}\) are the Kraus operators for the noise channel.
+                    The fact that we have a product state comes from the mutual information condition, and the reduced state on the reference system is clearly maximally mixed because we started in a Bell state. We can then pick a different purification of this mixed state, one that is of the form
+                    $$
+                    \Phi_{RA}\otimes \psi_{EE^\prime}.
+                    $$
+                    And by the unitary equivalence of purifications, there must exist an isometry
+                    $$
+                    W:|\psi\rangle_{RBE}\mapsto |\Phi\rangle_{RA}\otimes |\phi\rangle_{EE^\prime}
+                    $$
+                    that acts trivially on the reference and environment.
+                </p>
+                <h2>Approximate error correction</h2>
+                <p>
+                    What happens if
+                    $$
+                    I(R:E|B) = \underset{B}{\mathbb{E}}\ \mathrm{D}(p_{RE|B}||p_{R|B}\otimes p_{E|B}) = \epsilon
+                    $$
+                    classically? Then a straightforward exercise is to show (by <a target="_blank" href="https://en.wikipedia.org/wiki/Pinsker%27s_inequality">Pinsker's</a>, Triangle, concavity of square-root) that we have
+                    $$
+                    \lVert p_{RBE} - q_{RBE}\rVert_1 = O(\sqrt{\epsilon}), \qquad q_{RBE}\equiv\mathbb{E}_B\ p_{R|B}\otimes p_{E|B}.
+                    $$
+                    Furthermore, this is a good starting point to show that the procedure we outlined above gives a state that is pretty close in TV distance to the desired "perfectly correlated" initial state, which lines up with what we mentioned would constitute a good definition of approximate error correction.
+                </p>
+                <h3>References</h3>
+                <ol>
+                    <li id="klqec">E. Knill and R. Laflamme. "Theory of quantum error-correcting codes". <i>Physical Review A</i>55, 900 (1997). <a target="_blank" href="https://arxiv.org/abs/quant-ph/9604034">arXiv</a></li>
+                    <li id="ns1996qec">B. Schumacher and M.A. Nielsen. "Quantum data processing and error correction". <i>Phys. Rev. A</i> 54, 2629 (1996). <a target="_blank" href="https://arxiv.org/abs/quant-ph/9604022">arXiv</a></li>
+                </ol>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    window.MathJax = {
+        chtml: { scale: 0.9 },  // CommonHTML output
+        svg:   { scale: 0.9 }   // SVG output (if you use it)
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

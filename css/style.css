@@ -1,22 +1,29 @@
+html {
+  overflow-y: scroll;         /* fallback */
+  scrollbar-gutter: stable;   /* modern */
+}
+
+
 body {
-    font: "Open Sans", sans-serif;
-    font-weight: 350;
+    font-family: "Tinos", sans-serif;
+    font-weight: 300;
+    font-size: 12pt;
 }
 
 h1 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Tinos", sans-serif;
     font-weight: 300;
     padding-bottom: 0.2em;
 }
 
 h2 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Tinos", sans-serif;
     font-weight: 300;
     padding-bottom: 0.2em;
 }
 
 h4 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Tinos", sans-serif;
     font-weight: 300;
     padding-bottom: 0.2em;
     font-style: italic;
@@ -61,4 +68,14 @@ li {
 .col-centered{
     float: none;
     margin: 0 auto;
+}
+
+a.nav-item{
+    color: #000000;
+}
+
+a.nav-item:hover {
+    color: #9d1717;
+    opacity: 0.5;
+    text-decoration-line: underline;
 }
