@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Angus Lowe is a PhD student in physics at MIT focusing on quantum information science.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <title>Angus Lowe | MIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/academicons.min.css"/>
+</head>
+
+
+<body>
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <a href="../../folklore.html">Back</a>
+                <hr>
+
+                <h1 style="text-align: center;">Quantum capacity of the erasure channel</h1>
+                <i>This is a condensed version, with figures, of an argument appearing in Ref. [<a href="#preskillchap7">1</a>].</i>
+                <br>
+                <br>
+                <p>
+                    The quantum capacity \(Q(p)\) of the erasure channel \(\mathcal{N}:\rho\mapsto (1-p)\rho + p\lvert\perp\rangle\langle\perp\rvert\) is zero if \(p\geq 1/2\) and
+                    $$
+                    Q(p)=1-2p \quad \forall p\in [0,1/2).
+                    $$
+                    The attainability of this rate can be proven using random stabilizer codes and a probabilistic existence argument<sup><a href="#preskillchap7">1</a>,<a href="#wilde">2</a></sup>. (Perhaps I will update with this direction later.) In the remainder of this note we proof-sketch the upper bound.                    
+                </p>
+                <p>
+                    Let \(Q\equiv Q(p)\). If Alice and Bob are allowed \(m\) uses of the identity channel combined with \(n\) uses of the erasure channel, then they can reliably encode at most \(m+Qn\) qubits for large \(m\) and \(n\)<sup><a href="#footnote1">3</a></sup>. Now, suppose we have \(0\leq p\leq 1/2\), and imagine Alice can protect \((1-2p)\) of the qubits (as a fraction) from the noise, but each of the remaining qubits are sent through an erasure channel with parameter \(1/2\). Then the above argument tells us the rate in this situation is at most \(R(p) \equiv (1-2p)+Q(\tfrac{1}{2})\).
+                </p>
+                <p>
+                    However, for a large enough number of sent qubits, the above noise model is equivalent<sup><a href="footnote2">4</a></sup> to erasure with probability \(p\), with the extra knowledge of which qubits are protected. That knowledge can only help, so \(Q(p)\leq R(p)\).
+                </p>
+                <p>
+                    Finally, \(Q(\tfrac{1}{2})\) is necessarily zero for the following reason. When \(p=1/2\) one complementary channel of the erasure channel is the <i>same</i> erasure channel:
+                </p>
+                <img src="img/erasure_complementary.svg" alt="erasure_complementary_channel" style="display:block;width:30em;margin-left:auto;margin-right:auto;">
+                <div style="text-align:center;font-size:small;">Figure 1: Complementary channel of the erasure channel at \(p=1/2\) is the same erasure channel. I.e., whether you trace out the environment or Bob, the effect is the same.</div>
+                <br>
+                <p>
+                    Thus any protocol with nonzero rate used by Bob could just as well be used by Eve to prepare the encoded state in her register, resulting in two transmitted copies of the encoded state each with arbitrarily high fidelity:
+                </p>
+                <img src="img/candidate_cloner.svg" alt="candidate_cloner" style="display:block;width:20em;margin-left:auto;margin-right:auto;">
+                <div style="text-align:center;font-size:small;">Figure 2: Candidate protocol for cloning the encoded state \(\lvert\psi\rangle\), which succeeds (with enough uses of the purified noise channel) so long as the rate is nonzero. Since this is impossible, we conclude the channel has zero rate.</div>
+                <br>
+                This violates no-cloning and is therefore impossible.
+                <br><br>
+
+                <h3>References & Footnotes</h3>
+                <ol>
+                    <li id="preskillchap7">J. Preskill. "Chapter 7: Quantum Error Correction". <i>Lecture Notes for Physics 219 at Caltech</i>. (Retrieved Feb 2026.) <a target="_blank" href="https://www.preskill.caltech.edu/ph229/notes/chap7.pdf">https://www.preskill.caltech.edu/ph229/notes/chap7.pdf</a></li>
+                    <li id="wilde">M. Wilde. "From Classical to Quantum Shannon Theory". <i>Cambridge University Press</i> (2016). <a href="https://arxiv.org/abs/1106.1445">arXiv</a></li>
+                    <li id="footnote1">Otherwise, we could employ \(m/Q + n = (m+Qn)/Q\) uses of \(\mathcal{N}\) to simulate that protocol, and if the number of encoded qubits exceeds \(m+Qn\), the rate is strictly greater than \(Q\), a contradiction.</li>
+                    <li id="footnote2">Why? The fraction of erased qubits is equal to \(p\) in expectation, and concentrates around this value when the number of sent qubits is large.</li>
+                </ol>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    window.MathJax = {
+        chtml: { scale: 0.9 },  // CommonHTML output
+        svg:   { scale: 0.9 }   // SVG output (if you use it)
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
