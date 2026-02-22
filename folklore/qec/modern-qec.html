@@ -18,7 +18,10 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-6 mx-auto">
-                <a href="../../folklore.html">Back</a>
+                <div style="display: flex; justify-content: space-between;">
+                    <span><a href="../../folklore.html">Back</a></span>
+                    <span style="font-style: italic;">Last Updated: 02/22/2026</span>
+                </div>
                 <hr>
 
                 <h1 style="text-align: center;">Modern Quantum Error Correcting Conditions</h1>
@@ -31,7 +34,7 @@
                     Let’s focus on getting criteria for classical error correction for now. First, we need to define what it means to perform error correction. Suppose we define the task naively as reproducing some initial classical state (probability vector) after some noise (a stochastic map) acts on it. We could set as our metric for success the total variation distance between initial and final states. What’s wrong with this picture? Well, it doesn’t capture what we mean by error correction: one option would be to just ignore the corrupted message entirely and replace it with some independent but identically distributed random variable, which “succeeds“ at this task. Clearly, we need to define the task another way, one that captures the idea of decoding the message that was actually sent. This can be accomplished with a different picture:
                 </p>
 
-                <img src="img/qec_fig_1.svg" alt="qec_fig_1" style="display:block;width:35em;margin-left:auto;margin-right:auto;">
+                <img src="../img/qec_fig_1.svg" alt="qec_fig_1" style="display:block;width:35em;margin-left:auto;margin-right:auto;">
                 <div style="text-align:center;font-size:small;">Figure 1: Purified version of a classical error correction task.</div>
                 <br>
                 <p>
@@ -71,7 +74,7 @@
                     Then this procedure has exactly reproduced the state prior to discarding the information in E, and we can do a final step of running the noise permutation in reverse to get the initial, perfectly correlated state (after the encoding), without touching the reference system.
                 </p>
                 <h2>Quantum error correction</h2>
-                <img src="img/qec_fig_2.svg" alt="qec_fig_2" style="display:block;width:35em;margin-left:auto;margin-right:auto;">
+                <img src="../img/qec_fig_2.svg" alt="qec_fig_2" style="display:block;width:35em;margin-left:auto;margin-right:auto;">
                 <div style="text-align:center;font-size:small;">Figure 2: The “purified“ version of the defining task in quantum error correction.</div>
                 <br>
                 <p>

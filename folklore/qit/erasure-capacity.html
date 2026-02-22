@@ -18,9 +18,11 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col-lg-6 mx-auto">
-                <a href="../../folklore.html">Back</a>
+                <div style="display: flex; justify-content: space-between;">
+                    <span><a href="../../folklore.html">Back</a></span>
+                    <span style="font-style: italic;">Last Updated: 02/22/2026</span>
+                </div>
                 <hr>
-
                 <h1 style="text-align: center;">Quantum Capacity of the Erasure Channel</h1>
                 <i>This is a condensed version, with figures, of an argument appearing in Ref. [<a href="#preskillchap7">1</a>].</i>
                 <br>
@@ -36,18 +38,18 @@
                     Let \(Q\equiv Q(p)\). If Alice and Bob are allowed \(m\) uses of the identity channel combined with \(n\) uses of the erasure channel, then they can reliably encode at most \(m+Qn\) qubits for large \(m\) and \(n\)<sup><a href="#footnote1">3</a></sup>. Now, suppose we have \(0\leq p\leq 1/2\), and imagine Alice can protect \((1-2p)\) of the qubits (as a fraction) from the noise, but each of the remaining qubits are sent through an erasure channel with parameter \(1/2\). Then the above argument tells us the rate in this situation is at most \(R(p) \equiv (1-2p)+Q(\tfrac{1}{2})\).
                 </p>
                 <p>
-                    However, for a large enough number of sent qubits, the above noise model is equivalent<sup><a href="footnote2">4</a></sup> to erasure with probability \(p\), with the extra knowledge of which qubits are protected. That knowledge can only help, so \(Q(p)\leq R(p)\).
+                    However, for a large enough number of sent qubits, the above noise model is equivalent<sup><a href="#footnote2">4</a></sup> to erasure with probability \(p\), with the extra knowledge of which qubits are protected. That knowledge can only help, so \(Q(p)\leq R(p)\).
                 </p>
                 <p>
                     Finally, \(Q(\tfrac{1}{2})\) is necessarily zero for the following reason. When \(p=1/2\) one complementary channel of the erasure channel is the <i>same</i> erasure channel:
                 </p>
-                <img src="img/erasure_complementary.svg" alt="erasure_complementary_channel" style="display:block;width:30em;margin-left:auto;margin-right:auto;">
+                <img src="../img/erasure_complementary.svg" alt="erasure_complementary_channel" style="display:block;width:30em;margin-left:auto;margin-right:auto;">
                 <div style="text-align:center;font-size:small;">Figure 1: Complementary channel of the erasure channel at \(p=1/2\) is the same erasure channel. I.e., whether you trace out the environment or Bob, the effect is the same.</div>
                 <br>
                 <p>
                     Thus any protocol with nonzero rate used by Bob could just as well be used by Eve to prepare the encoded state in her register, resulting in two transmitted copies of the encoded state each with arbitrarily high fidelity:
                 </p>
-                <img src="img/candidate_cloner.svg" alt="candidate_cloner" style="display:block;width:20em;margin-left:auto;margin-right:auto;">
+                <img src="../img/candidate_cloner.svg" alt="candidate_cloner" style="display:block;width:20em;margin-left:auto;margin-right:auto;">
                 <div style="text-align:center;font-size:small;">Figure 2: Candidate protocol for cloning the encoded state \(\lvert\psi\rangle\), which succeeds (with enough uses of the purified noise channel) so long as the rate is nonzero. Since this is impossible, we conclude the channel has zero rate.</div>
                 <br>
                 This violates no-cloning and is therefore impossible.
