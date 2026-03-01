@@ -18,19 +18,26 @@
     <!-- Navbar -->
     <div class="container pt-4">
         <div class="row">
-            <!-- Attempt to add space before nav -->
+            <!-- Keep the original spacer -->
             <div class="col-md-3">
-               <br>
+                <br>
             </div>
-            <!-- Actual nav -->
+
+            <!-- Keep About exactly where it was -->
             <div class="col-md-1">
                 <span style="font-weight: 500; color:#9d1717;">About</span>
             </div>
-            <div class="col-md-3">
-                <span><a class="nav-item" href="./folklore.html">Folklore on Qubits</a></span>
+
+            <!-- Keep the original title width, but split it internally -->
+            <div class="col-md-5">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <span><a class="nav-item" href="./folklore.html">Folklore on Qubits</a></span>
+                    <span style="font-style: italic; font-size: 0.9em;">Last Updated: 02/28/2026</span>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-3">

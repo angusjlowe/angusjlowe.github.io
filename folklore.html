@@ -19,19 +19,26 @@
     <!-- Navbar -->
     <div class="container pt-4">
         <div class="row">
-            <!-- Attempt to add space before nav -->
+            <!-- Keep the original spacer -->
             <div class="col-md-3">
-               <br>
+                <br>
             </div>
-            <!-- Actual nav -->
+
+            <!-- Keep About exactly where it was -->
             <div class="col-md-1">
                 <span><a class="nav-item" href="./index.html">About</a></span>
             </div>
-            <div class="col-md-3">
-                <span style="font-weight: 500; color:#9d1717;">Folklore on Qubits</span>
+
+            <!-- Keep the original title width, but split it internally -->
+            <div class="col-md-5">
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <span style="font-weight: 500; color:#9d1717;">Folklore on Qubits</span>
+                    <span style="font-style: italic; font-size: 0.9em;">Last Updated: 02/28/2026</span>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -54,6 +61,8 @@
                 <br>
                 <div id="qec" class="collapse">
                     <a class="nav-item" href="./folklore/qec/modern-qec.html">Modern Quantum Error Correcting Conditions.</a>
+                    <br>
+                    <a class="nav-item" href="./folklore/qec/pauli-errors-suffice-for-stabilizer-qec.html">Pauli Errors Suffice for Stabilizer Codes.</a>
                 </div>
                 <span style="font-weight: 500;"><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qit">Quantum Information Theory</a></span>
                 <br>
