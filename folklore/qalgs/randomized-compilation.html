@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Angus Lowe is a PhD student in physics at MIT focusing on quantum information science.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <title>Angus Lowe | MIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/academicons.min.css"/>
+</head>
+
+
+<body id="#top">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div style="display: flex; justify-content: space-between;">
+                    <span><a href="../../folklore.html">Back</a></span>
+                    <span style="font-style: italic;">Last Updated: 03/26/2026</span>
+                </div>
+                <hr>
+                <h1 style="text-align: center;">Randomized Compilation</h1>
+                <p>
+                    A growing body of work in the last few years points to randomization being a powerful tool for simulating quantum processes. For example, the fact that one can use a linear combination of noisy quantum channels to simulate the action of a unitary is the basis for the probabilistic error cancellation method in error mitigation. However, this is an example where noise is used to counteract noise, and the improvements gained are necessarily modest. Perhaps more strikingly, randomness can also sometimes give dramatically improved methods in the noise-free setting where one wishes to simulate unitaries with other unitaries. For instance, it has recently been shown<sup><a href="#gkz25">1</a></sup> that an n-qubit Toffoli gate can be implemented using exponentially fewer T gates using randomly drawn circuits, and other works<sup><a href="#Cam17">2</a></sup><sup>,</sup><sup><a href="#CHKT21">3</a></sup> draw attention to randomization reducing Trotter steps in Hamiltonian simulation. While we are used to thinking of uniquely quantum phenomena (e.g., entanglement) as resources for improving classical information processing tasks, these examples flip the script on this mantra: in the physically realistic setting of limited coherent control, classical randomness can be a resource for quantum information processing tasks.
+                </p>
+                <p>
+                    In this note, I wanted to record my understanding of a clean example of the phenomenon that has been noted elsewhere<sup><a href="#CHKT21">3</a></sup>. Without being too precise for the moment, the claim is as follows.
+                </p>
+                <p>
+                    <i>There is a simple, physically realistic Hamiltonian $H$ which requires $\Omega(n)$ unitary gates to simulate to constant accuracy, but only $O(1)$ gates if one allows for randomness.</i>
+                </p>
+                <p>
+                    Suppose that one's goal is to implement the gate
+                    $$
+                    U=e^{i\pi\frac{1}{n}\sum_{i=1}^nZ_i}
+                    $$
+                    which is a product of $Z$ rotations. Evidently, we need at least $\lceil n/2\rceil$ one and two-qubit gates to implement it exactly: otherwise, we cannot even affect all $n$ qubits. Now, if we allow for some error tolerance, say, $\epsilon$, then we can try to get away with fewer gates via an approximation $V$ such that the error in diamond distance is at most $\epsilon$. It is easier to work with the quantity $\nu(W)=\min_{\ket{\psi}}|\langle \psi | W | \psi \rangle|$, which is reasonable since it is not difficult to see that for unitary channels $\mathcal{U},\mathcal{V}$ corresponding to unitaries $U$, $V$, respectively, we have
+                    $$
+                    \frac{1}{2}{\lVert \mathcal{U}-\mathcal{V}\rVert}_{\diamond} = \sqrt{1-\nu(U^\dagger V)^2}.
+                    $$
+                    The state $\ket{\psi}$ attaining the minimum is a witness for the distinguishability of the two unitaries: evolving by one of them gives a different state compared to evolution by the other, and the overlap is less than one. This difference can be used to distinguish the unitaries. Our goal will be to make sure that our simulation is good enough to fool an adversary who may try to make use of such a worst-case state. This is impossible to do without many gates deterministically, but can be accomplished using a random selection of a few gates.
+                </p>
+                <h2>The lower bound</h2>
+                <p>
+                    Suppose we have fewer than $n/8$ two-qubit gates. Then w.l.o.g. the first $m = 3n/4$ qubits are acted on by identity in the approximation. Also
+                    $$
+                    \nu(U\otimes V)\leq \min_{\ket{\psi}\otimes\ket{\phi}}|\bra{\psi}U\ket{\psi}||\bra{\phi}V\ket{\phi}| \leq \min_{\ket{\psi}}|\bra{\psi}U\ket{\psi}|
+                    $$
+                    implies
+                    $$
+                    \nu(e^{i\pi\sum_{i=1}^{m}Z_i/n}\otimes U)\leq \nu(e^{i\pi\sum_{i=1}^{m}Z_i/n})
+                    $$
+                    for any $U$, and the latter quantity is
+                    $$
+                    \begin{align}
+                    |\bra{\textnormal{cat}}e^{i\pi\sum_{i=1}^mZ_i/n}\ket{\textnormal{cat}}| &= \frac{1}{2}|(\bra{00\dots 0}+\bra{11\dots 1})(e^{i\pi m/n}\ket{00\dots 0}+e^{-i\pi m/n}\ket{11\dots 1})|\\
+                    &= |\cos(\pi m/n)|\\
+                    &=|\cos(3\pi/4)|\\
+                    &= \frac{1}{\sqrt{2}}.
+                    \end{align}
+                    $$
+                    So the error in diamond distance is at least $1/2$ so long as there are fewer than $n/8$ gates.
+                </p>
+                <h2>The upper bound</h2>
+                <p>
+                    Next, let's allow for randomizing the approximation. More precisely, *we allow the user to implement a random unitary $V$ which is comprised of at most $m$ gates with probability one*. Let $\hat{V}\equiv \mathbb{E}V$. It can be shown<sup><a href="#footnote">4</a></sup> that
+                    $$
+                    \frac{1}{2}{\lVert \mathcal{U}-\mathbb{E}\mathcal{V}\rVert}_\diamond \leq 2\lVert U-\hat{V}\rVert
+                    $$
+                    where $\mathcal{U}:\rho\mapsto U\rho U^\dagger$ and $\mathcal{V}: \rho\mapsto V\rho V^\dagger$. So it remains to bound the qDRIFT error where we sample $i$ with probability $1/n$ for each $i\in [n]$, evolve this single qubit by $e^{i\pi Z_i /m}$, and repeat this $m$ times. First, note that for $V$ a product of random $V_1,\dots, V_m$ we have
+                    $$
+                    \begin{align}
+                        \lVert \mathbb{E}V - U\rVert &= \lVert\mathbb{E}\left(V_m\dots V_1 + U^{1/m}V_{m-1}\dots V_1 - U^{1/m}V_{m-1}\dots V_1 - U^{1/m}\dots U^{1/m}\right)\rVert\\
+                        &\leq \lVert U^{1/m}\mathbb{E}(V_{m-1}\dots V_1-U^{1/m}\dots U^{1/m})\rVert + \lVert \mathbb{E}(V_m -U^{1/m})V_{m-1}\dots V_1\rVert
+                    \end{align}
+                    $$
+                    The first term equals $\lVert \mathbb{E}V_{m-1}\dots V_1 - U^{1/m}\dots U^{1/m}\rVert$. The second term can be bounded using
+                    $$
+                    \begin{align}
+                        {\lVert(\mathbb{E}(V_m -U^{1/m})V_{m-1}\dots V_1)\rVert} &\leq \mathbb{E}_{V_{m-1},\dots, V_1}{\lVert \mathbb{E}(V_m -U^{1/m})V_{m-1}\dots V_1\rVert}\\
+                        &= \lVert \mathbb{E} V_m - U^{1/m}\rVert.
+                    \end{align}
+                    $$
+                    Continuing this logic, we arrive at
+                    $$
+                    \begin{align}
+                        \lVert \mathbb{E}V - U\rVert&\leq \sum_{j=1}^m \lVert \mathbb{E}V_j - U^{1/m}\rVert.
+                    \end{align}
+                    $$
+                    Hence, if $V_1,\dots, V_m$ are iid, we get $\lVert \hat{V}-U\rVert\leq m \lVert\mathbb{E}V_1 - U^{1/m}\rVert$. In our case, we have $U=e^{i\pi \frac{1}{n}\sum_{i=1}^n Z_i}$ and $V_1 = e^{i\pi X/m}$ where $X=Z_i$ with probability $p_i\equiv 1/n$. We can evaluate
+                    $$
+                    \mathbb{E}V_1 = \cos(\pi/m)I+i\sin(\pi/m)H
+                    $$
+                    where we have used the shorthand $H=\tfrac{1}{n}\sum_{i=1}^n Z_i$. Hence,
+                    $$
+                    \begin{align}
+                        \lVert\mathbb{E} V_1 - U^{1/m}\rVert &= \lVert\cos(\pi/m)I + i\sin(\pi/m)H - e^{i \pi H/m}\rVert\\
+                        &= \lVert\sum_{j=0,2,4,\dots}\frac{1}{j!}\left(\frac{\pi}{m}\right)^j (I-i^jH^j) + \sum_{j=1,3,5,\dots}\frac{1}{j!}\left(\frac{\pi}{m}\right)^j(iH - i^jH^j)\rVert\\
+                        &\leq \sum_{j=0,2,4,\dots}\frac{1}{j!}\left(\frac{\pi}{m}\right)^j \lVert I-i^jH^j\rVert + \sum_{j=1,3,5,\dots}\frac{1}{j!}\left(\frac{\pi}{m}\right)^j\lVert iH - i^jH^j\rVert\\
+                        &= \sum_{j=2,4,\dots}\frac{1}{j!}\left(\frac{\pi}{m}\right)^j \lVert I-i^jH^j\rVert + \sum_{j=3,5,\dots}\frac{1}{j!}\left(\frac{\pi}{m}\right)^j\lVert iH - i^jH^j\rVert\\
+                        &= \left(\frac{\pi}{m}\right)^2\sum_{j=0,2,\dots}\frac{1}{(j+2)!}\left(\frac{\pi}{m}\right)^j \lVert I-i^{j+2}H^{j+2}\rVert 
+                        \\ &\qquad\qquad\qquad+ \left(\frac{\pi}{m}\right)^3\sum_{j=3,5,\dots}\frac{1}{(j+3)!}\left(\frac{\pi}{m}\right)^{j}\lVert iH - i^{j+3}H^{j+3}\rVert\\
+                        &\leq 2\left(\frac{\pi}{m}\right)^2\exp(\pi)+2\left(\frac{\pi}{m}\right)^3\exp(\pi)\\
+                        &= \frac{2\pi^2e^{\pi}}{m^2}\left(1 + \frac{\pi}{m}\right)\\
+                        &= O(m^{-2})
+                    \end{align}
+                    $$
+                    where, in the second-to-last line, we used triangle inequality for the operator norm and bounded the infinite series from above. Thus,
+                    $$
+                    \lVert \hat{V} - U\rVert = O(m^{-1})
+                    $$
+                    and in order to attain error $\epsilon$ in diamond error, it suffices to take $m=\Theta(\epsilon^{-1})$. Hence, for sufficiently small error, $m=\Omega(n)$ gates are required deterministically while $m=O(1)$ suffices if one uses randomness.
+                </p>
+                <h3>References & Footnotes</h3>
+                <ol>  
+                    <li id="gkz25">D. Gosset, R. Kothari, and C. Zhang. "Multi-qubit Toffoli with exponentially fewer T gates". arXiv:2510.07223.</li>
+                    <li id="Cam17">E. Campbell. "A random compiler for fast Hamiltonian simulation". <i>Physical Review Letters</i> 123, 070503 (2019).</li>
+                    <li id="CHKT21">C. Chen, H. Huang, R. Kueng, and J. Tropp. "Concentration for Random Product Formulas". <i>PRX Quantum</i> 2, 040305 (2021).</li>
+                    <li id="footnote1">This is left as a (non-trivial) exercise to the reader, mainly involving adding and subtracting terms and Hölder's inequality.</li>
+                </ol>
+                <hr>
+                <a href="#top">Top</a>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    window.MathJax = {
+        chtml: { scale: 0.9 },  // CommonHTML output
+        svg:   { scale: 0.9 },   // SVG output (if you use it)
+        tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
