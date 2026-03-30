@@ -37,7 +37,7 @@ ul
 }
 
 a {
-    color: #9d1717;
+    color: #73937e;
     text-decoration: none;
 }
 
@@ -75,7 +75,13 @@ a.nav-item{
 }
 
 a.nav-item:hover {
-    color: #9d1717;
+    color: #73937e;
     opacity: 0.5;
     text-decoration-line: underline;
+}
+
+blockquote {
+  border-left: 2px solid #73937e;   /* vertical line */
+  padding-left: 1em;             /* space between line and text */
+  font-style: italic;
 }
