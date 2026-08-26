@@ -1,22 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Angus Lowe is a PhD student in physics at MIT focusing on quantum information science.">
+    <meta name="description" content="Angus Lowe is a PhD candidate in physics at MIT focusing on quantum information science.">
+    <title>Angus Lowe</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <title>Angus Lowe | MIT</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Inter:ital,opsz,wght@0,14..32,200..600;1,14..32,200..600&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/academicons.min.css"/>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="css/academicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <!-- Navbar -->
-    <div class="container pt-4">
+    <div class="container pt-4 masthead">
         <div class="row">
             <!-- Keep the original spacer -->
             <div class="col-md-3">
@@ -25,14 +27,14 @@
 
             <!-- Keep About exactly where it was -->
             <div class="col-md-1">
-                <span style="font-weight: 500; color:#73937e;">About</span>
+                <span class="nav-current">About</span>
             </div>
 
             <!-- Keep the original title width, but split it internally -->
             <div class="col-md-5">
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
                     <span><a class="nav-item" href="./folklore.html">Folklore on Qubits</a></span>
-                    <span style="font-style: italic; font-size: 0.9em;">Last Updated: 06/23/2026</span>
+                    <span class="masthead-meta">Last updated: 08/26/2026</span>
                 </div>
             </div>
         </div>
@@ -48,123 +50,173 @@
             </div>
         </div>
     </div>
+
     <!-- Main content -->
     <div class="container pt-2">
         <div class="row">
             <!-- Profile pic and contact details -->
             <div class="col-md-3">
-                <img src="img/profile_pic_2.jpg"  class="img-responsive center-block" width=180>
-                <br>
-                <div style="display: inline-block; padding-top:1em; font-size:14px;">
-                    <span>Angus Lowe</span>
-                    <br>
-                    <span>PhD Candidate | MIT</span>
-                    <br>
-                    <span style="font-weight: 500;">Email</span>: alowe7 at mit dot edu
-                    <br>
-                    <a href="https://scholar.google.ca/citations?user=SlJxsUcAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai" style="font-size: 21px;"></i></a>
-                    <a href="https://linkedin.com/in/angus-lowe-a53525b6"><i class="lab la-linkedin" style="font-size:24px"></i></a>
+                <img src="img/profile_pic_2.jpg" class="profile-photo" width="180" alt="Angus Lowe">
+
+                <div class="identity">
+                    <h1 class="identity-name">Angus Lowe</h1>
+                    <span class="identity-role">PhD Candidate &middot; MIT</span>
+
+                    <span class="identity-label">Email</span>: alowe7 at mit dot edu
+
+                    <div class="identity-links">
+                        <a href="https://scholar.google.ca/citations?user=SlJxsUcAAAAJ&amp;hl=en" aria-label="Google Scholar"><i class="ai ai-google-scholar-square" style="font-size: 21px;"></i></a>
+                        <a href="https://linkedin.com/in/angus-lowe-a53525b6" aria-label="LinkedIn"><i class="lab la-linkedin" style="font-size: 24px;"></i></a>
+                    </div>
                 </div>
                 <br><br>
             </div>
+
             <!-- Column containing bio and CV details -->
-            <div class="col-md-6">
-                <p>I am a PhD candidate at the <a href="https://physics.mit.edu/research/labs-centers/center-for-theoretical-physics/">Center for Theoretical Physics</a> at <a href=https://www.mit.edu>MIT</a>, advised by <a href="https://www.mit.edu/~aram/">Aram Harrow</a>. My primary interests lie in <a href="https://physics.mit.edu/wp-content/uploads/2021/01/physicsatmit_04_quantuminformation.pdf">quantum information science</a>, particularly quantum algorithms, learning properties of quantum states, and information theory. Before MIT, I completed a BSc in computer science and physics at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a> and an MMATH at the <a href="https://uwaterloo.ca/">University of Waterloo</a>. I also previously worked as a quantum algorithms researcher at <a href="https://www.xanadu.ai/">Xanadu</a>.</p>
-            <!-- Begin CV details with headings -->
-            <br>
-            <h2>Selected Papers</h2>
-            <i>Author ordering is alphabetical. For a complete list of publications and preprints, click <a href="https://scholar.google.ca/citations?user=SlJxsUcAAAAJ&hl=en">here</a>.</i>
-            <div style="margin-top:1em;">
-                <ul>
-                    <li>
-                        <strong>Random dimension reduction and learning symmetric properties of quantum states</strong> [<a href="https://arxiv.org/abs/2606.23592">arXiv</a>]
-                        <br>
-                        <weak>Angus Lowe</weak>, Xinyu Tan
-                    </li>
-                    <li>
-                        <strong>Randomized truncation of quantum states</strong> [<a href="https://arxiv.org/abs/2510.08518">arXiv</a>]
-                        <br>
-                        Aram W. Harrow, <weak>Angus Lowe</weak>, Freek Witteveen
-                    </li>
-                    <li>
-                        <strong>Nearly tight bounds for testing tree tensor network states</strong> [<a href="https://arxiv.org/abs/2410.21417">arXiv</a>]
-                        <br>
-                        Benjamin Lovitz, <weak>Angus Lowe</weak>
-                        <br>
-                        <weak>QIP '25, IEEE Transactions on Information Theory, Vol. 72, No. 5</weak>
-                    </li>
-                    <li>
-                        <strong>Optimal quantum circuit cuts with application to clustered Hamiltonian simulation</strong> [<a href="https://arxiv.org/abs/2403.01018">arXiv</a>]
-                        <br>
-                        Aram W. Harrow, <weak>Angus Lowe</weak>
-                        <br>
-                        <weak>QCTiP '24, PRX Quantum 6, 010316</weak>
-                    </li>
-                    <li>
-                        <strong>Lower bounds for learning quantum states with single-copy measurements</strong> [<a href="https://arxiv.org/abs/2207.14438">arXiv</a>]
-                        <br>
-                        <weak>Angus Lowe</weak>, Ashwin Nayak
-                        <br>
-                        <weak>QIP '22, ACM Transactions on Computation Theory, Vol. 17, Iss. 1</weak>
-                    </li>
-                </ul>
-                <br>
-                <h2>Talks</h2>
-                <ul>
-                    <li>
-                        <strong>Nearly tight bounds for testing tree tensor network states</strong> [<a href="/files/qip_2025_testing_trees.pdf">slides</a>, <a href="https://www.youtube.com/watch?v=PTH6mRwnBxE">watch</a>]
-                        <br>
-                        <weak>QIP '25</weak>
-                    </li>
-                    <li>
-                        <strong>Optimal quantum circuit cuts with application to clustered Hamiltonian simulation</strong> [<a href="/files/qctip_2024_pres.pdf">slides</a>, <a href="https://media.ed.ac.uk/playlist/dedicated/361862482/1_lh0o971a/1_j2tglkuz">watch</a>]
-                        <br>
-                        <weak>QCTiP '24</weak>
-                    </li>
-                    <li>
-                        <strong>Lower bounds for learning quantum states with single-copy measurements</strong> [<a href="/files/qip_2022_pres.pdf">slides</a>, <a href="https://www.youtube.com/watch?v=4pAl502InS0">watch</a>]
-                        <br>
-                        <weak>QIP '22</weak>
-                    </li>
-                </ul>
-                <br>
-                <h2>Teaching</h2>
-                <strong>MIT</strong>
-                <ul style="padding-top: 0.5em">
-                    <li>&nbsp&nbsp TA for 8.371: Quantum Information Science II (Spring 2026)</li>
-                    <li>&nbsp&nbsp TA for 8.01: Classical Mechanics (Fall 2025)</li>
-                </ul>
-                <strong>University of Waterloo</strong>
-                <ul style="padding-top: 0.5em;">
-                    <li>&nbsp&nbsp TA for CO 250: Introduction to Optimization (Spring 2021)</li>
-                    <li>&nbsp&nbsp TA for CO 255: Advanced Introduction to Optimization (Fall 2020)</li>
-                    <li>&nbsp&nbsp TA for CO 370: Determinstic Operational Research Models (Fall 2020)</li>
-                    <li>&nbsp&nbsp TA for MATH 136: Linear Algebra I (Winter 2020)</li>
-                </ul>
-                <br>
-                <h2>Other writing</h2>
-                <ul>
-                    <li>
-                        <strong>(Master's Thesis) Learning Quantum States Without Entangled Measurements</strong> [<a href="https://uwspace.uwaterloo.ca/handle/10012/17663">link</a>]
-                        <br>
-                        <weak>Angus Lowe</weak>
-                        <br>
-                    </li>
-                    <li>
-                        <strong>Lecture Notes on Entanglement as a Resource (QIS II at MIT)</strong> [<a href="/files/entanglement-lecture.pdf">pdf</a>]
-                        <br>
-                        <weak>Angus Lowe</weak>
-                    </li>
-                    <li>
-                        <strong>Succinct analysis of the question-succinct Pauli braiding test</strong> [<a href="/files/mitqcrypto_2024_final_project-2.pdf">pdf</a>]
-                        <br>
-                        <weak>Angus Lowe</weak>, Quynh Nguyen
-                    </li>
-                </ul>
-                <br>                
-            </div>     
+            <div class="col-md-6 prose">
+                <p class="lede">I am a PhD candidate at the <a href="https://physics.mit.edu/research/labs-centers/center-for-theoretical-physics/">Center for Theoretical Physics</a> at <a href="https://www.mit.edu">MIT</a>, advised by <a href="https://www.mit.edu/~aram/">Aram Harrow</a>. My primary interests lie in <a href="https://physics.mit.edu/wp-content/uploads/2021/01/physicsatmit_04_quantuminformation.pdf">quantum information science</a>, particularly quantum algorithms and quantum learning theory. Before MIT, I completed a BSc in computer science and physics at the <a href="https://www.ed.ac.uk/">University of Edinburgh</a> and an MMATH at the <a href="https://uwaterloo.ca/">University of Waterloo</a>. I also spent a year working as a researcher at <a href="https://www.xanadu.ai/">Xanadu</a>.</p>
+
+                <p class="note">I will be on the job market in the fall of 2026; feel free to get in touch!</p>
+
+                <!-- Begin CV details with headings -->
+                <div class="section">
+                    <h2>Selected Papers</h2>
+                    <p class="section-note">Author ordering is alphabetical. For a complete list of publications and preprints, click <a href="https://scholar.google.ca/citations?user=SlJxsUcAAAAJ&amp;hl=en">here</a>.</p>
+
+                    <ul class="entry-list">
+                        <li>
+                            <span class="entry-title">Random dimension reduction and learning symmetric properties of quantum states</span>
+                            <span class="entry-links">[<a href="https://arxiv.org/abs/2606.23592">arXiv</a>]</span>
+                            <br>
+                            <span class="entry-authors"><span class="self">Angus Lowe</span>, Xinyu Tan</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Randomized truncation of quantum states</span>
+                            <span class="entry-links">[<a href="https://arxiv.org/abs/2510.08518">arXiv</a>]</span>
+                            <br>
+                            <span class="entry-authors">Aram W. Harrow, <span class="self">Angus Lowe</span>, Freek Witteveen</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Nearly tight bounds for testing tree tensor network states</span>
+                            <span class="entry-links">[<a href="https://arxiv.org/abs/2410.21417">arXiv</a>]</span>
+                            <br>
+                            <span class="entry-authors">Benjamin Lovitz, <span class="self">Angus Lowe</span></span>
+                            <br>
+                            <span class="entry-venue">IEEE Transactions on Information Theory, Vol. 72, No. 5</span><br>
+                            <span class="entry-venue">QIP '25</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Optimal quantum circuit cuts with application to clustered Hamiltonian simulation</span>
+                            <span class="entry-links">[<a href="https://arxiv.org/abs/2403.01018">arXiv</a>]</span>
+                            <br>
+                            <span class="entry-authors">Aram W. Harrow, <span class="self">Angus Lowe</span></span>
+                            <br>
+                            <span class="entry-venue">PRX Quantum 6, 010316</span><br>
+                            <span class="entry-venue">QCTiP '24</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Lower bounds for learning quantum states with single-copy measurements</span>
+                            <span class="entry-links">[<a href="https://arxiv.org/abs/2207.14438">arXiv</a>]</span>
+                            <br>
+                            <span class="entry-authors"><span class="self">Angus Lowe</span>, Ashwin Nayak</span>
+                            <br>
+                            <span class="entry-venue">ACM Transactions on Computation Theory, Vol. 17, Iss. 1</span><br>
+                            <span class="entry-venue">QIP '22</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2>Talks</h2>
+                    <ul class="entry-list">
+                        <li>
+                            <span class="entry-title">Random dimension reduction and learning symmetric properties of quantum states</span>
+                            <span class="entry-links">[<a href="/files/dimension_reduction_slides.pdf">slides</a>]</span>
+                            <br>
+                            <span class="entry-venue">Waterloo Quantum CS Seminar (Aug 2026)</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Randomized truncation of quantum states</span>
+                            <span class="entry-links">[<a href="/files/randomized_truncation_slides.pdf">slides</a>]</span>
+                            <br>
+                            <span class="entry-venue">Hon-Hai Research Institute Quantum Seminar (May 2026)</span><br>
+                            <span class="entry-venue">Columbia Quantum Group Meeting (Mar 2026)</span><br>
+                            <span class="entry-venue">Boston University Quantum Seminar (Jan 2026)</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Nearly tight bounds for testing tree tensor network states</span>
+                            <span class="entry-links">[<a href="/files/qip_2025_testing_trees.pdf">slides</a>, <a href="https://www.youtube.com/watch?v=PTH6mRwnBxE">watch</a>]</span>
+                            <br>
+                            <span class="entry-venue">QIP '25 (Feb 2025)</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Optimal quantum circuit cuts with application to clustered Hamiltonian simulation</span>
+                            <span class="entry-links">[<a href="/files/qctip_2024_pres.pdf">slides</a>, <a href="https://media.ed.ac.uk/playlist/dedicated/361862482/1_lh0o971a/1_j2tglkuz">watch</a>]</span>
+                            <br>
+                            <span class="entry-venue">QCTiP '24 (April 2024)</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Lower bounds for learning quantum states with single-copy measurements</span>
+                            <span class="entry-links">[<a href="/files/qip_2022_pres.pdf">slides</a>, <a href="https://www.youtube.com/watch?v=4pAl502InS0">watch</a>]</span>
+                            <br>
+                            <span class="entry-venue">QIP '22 (Mar 2022)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2>Teaching</h2>
+
+                    <div class="teaching-group">
+                        <h3>MIT</h3>
+                        <ul class="teaching-list">
+                            <li><span class="course-code">8.371</span>: Quantum Information Science II <span class="term">(Spring 2026)</span></li>
+                            <li><span class="course-code">8.01</span>: Classical Mechanics <span class="term">(Fall 2025)</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="teaching-group">
+                        <h3>University of Waterloo</h3>
+                        <ul class="teaching-list">
+                            <li><span class="course-code">CO 250</span>: Introduction to Optimization <span class="term">(Spring 2021)</span></li>
+                            <li><span class="course-code">CO 255</span>: Advanced Introduction to Optimization <span class="term">(Fall 2020)</span></li>
+                            <li><span class="course-code">CO 370</span>: Deterministic Operational Research Models <span class="term">(Fall 2020)</span></li>
+                            <li><span class="course-code">MATH 136</span>: Linear Algebra I <span class="term">(Winter 2020)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Other Writing</h2>
+                    <ul class="entry-list">
+                        <li>
+                            <span class="entry-title">Learning Quantum States Without Entangled Measurements</span>
+                            <span class="entry-links">[<a href="https://uwspace.uwaterloo.ca/handle/10012/17663">link</a>]</span>
+                            <br>
+                            <span class="entry-venue">Master's thesis, University of Waterloo</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Lecture notes on entanglement as a resource</span>
+                            <span class="entry-links">[<a href="/files/entanglement-lecture.pdf">pdf</a>]</span>
+                            <br>
+                            <span class="entry-venue">Quantum Information Science II, MIT</span>
+                        </li>
+                        <li>
+                            <span class="entry-title">Succinct analysis of the question-succinct Pauli braiding test</span>
+                            <span class="entry-links">[<a href="/files/mitqcrypto_2024_final_project-2.pdf">pdf</a>]</span>
+                            <br>
+                            <span class="entry-authors"><span class="self">Angus Lowe</span>, Quynh Nguyen</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="page-footer">
+                    <!--<p>Your footnote text goes here.</p>-->
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

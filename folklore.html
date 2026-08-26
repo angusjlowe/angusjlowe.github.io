@@ -1,23 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Angus Lowe is a PhD student in physics at MIT focusing on quantum information science.">
+    <meta name="description" content="Folklore on Qubits — notes on quantum information science by Angus Lowe.">
+    <title>Folklore on Qubits | Angus Lowe</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <title>Angus Lowe | MIT</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/academicons.min.css"/>
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,200..600;1,14..32,200..600&display=swap" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
 <body>
     <!-- Navbar -->
-    <div class="container pt-4">
+    <div class="container pt-4 masthead">
         <div class="row">
             <!-- Keep the original spacer -->
             <div class="col-md-3">
@@ -31,9 +30,9 @@
 
             <!-- Keep the original title width, but split it internally -->
             <div class="col-md-5">
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <span style="font-weight: 500; color:#73937e;">Folklore on Qubits</span>
-                    <span style="font-style: italic; font-size: 0.9em;">Last Updated: 03/26/2026</span>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
+                    <span class="nav-current">Folklore on Qubits</span>
+                    <span class="masthead-meta">Last updated: 08/26/2026</span>
                 </div>
             </div>
         </div>
@@ -49,44 +48,62 @@
             </div>
         </div>
     </div>
+
     <!-- Main content -->
     <div class="container pt-2">
         <div class="row">
             <div class="col-md-3">
                 <br>
             </div>
-            <div class="col-md-6">
-                <p>Below is a collection of notes on quantum information science. Many of these contain a fact or idea whose origin is difficult to pinpoint in the literature, but may have been implied by any number of works. I try my best to include relevant references.</p>
-                <span style="font-weight: 500;"><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qec">Quantum Error Correction</a></span>
-                <br>
-                <div id="qec" class="collapse">
-                    <a class="nav-item" href="./folklore/qec/modern-qec.html">Modern Quantum Error Correcting Conditions.</a>
-                    <br>
-                    <a class="nav-item" href="./folklore/qec/pauli-errors-suffice-for-stabilizer-qec.html">Pauli Errors Suffice for Stabilizer Codes.</a>
+            <div class="col-md-6 prose">
+                <p>A small collection of notes on quantum information science. Many of these contain a fact or idea whose origin is difficult to pinpoint in the literature, but may have been implied by any number of works. I try my best to include relevant references.</p>
+
+                <div class="section">
+                    <!--<h2><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qec">Quantum Error Correction</a></h2>-->
+                    <h2>Quantum Error Correction</h2>
+                    <ul class="note-list" id="qec">
+                        <li><a class="note-link" href="./folklore/qec/modern-qec.html">Modern quantum error correcting conditions</a></li>
+                        <li><a class="note-link" href="./folklore/qec/pauli-errors-suffice-for-stabilizer-qec.html">Pauli errors suffice for stabilizer codes</a></li>
+                    </ul>
                 </div>
-                <span style="font-weight: 500;"><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qit">Quantum Information Theory</a></span>
-                <br>
-                <div id="qit" class="collapse">
-                    <a class="nav-item" href="./folklore/qit/erasure-capacity.html">Quantum Capacity of the Erasure Channel.</a>
+
+                <div class="section">
+                    <h2>Quantum Information Theory</h2>
+                    <ul class="note-list" id="qit">
+                        <li><a class="note-link" href="./folklore/qit/erasure-capacity.html">Quantum capacity of the erasure channel</a></li>
+                    </ul>
                 </div>
-                <span style="font-weight: 500;"><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qalgs">Quantum Algorithms</a></span>
-                <br>
-                <div id="qalgs" class="collapse">
-                    <a class="nav-item" href="./folklore/qalgs/randomized-compilation.html">Randomized Compilation.</a>
+
+                <div class="section">
+                    <h2>Quantum Algorithms</h2>
+                    <ul class="note-list" id="qalgs">
+                        <li><a class="note-link" href="./folklore/qalgs/randomized-compilation.html">Randomized compilation</a></li>
+                    </ul>
                 </div>
-                <span style="font-weight: 500;"><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qlearning">Quantum Learning Theory</a></span>
-                <br>
-                <div id="qlearning" class="collapse">
-                    Coming Soon.
+
+                <!--
+                <div class="section">
+                    <h2>Quantum Learning Theory</h2>
+                    <ul class="note-list" id="qlearning">
+                        <li><span class="note-pending">Coming soon</span></li>
+                    </ul>
                 </div>
-                <span style="font-weight: 500;"><a class="nav-item" href="" data-bs-toggle="collapse" data-bs-target="#qphysics">QI & Physics</a></span>
-                <br>
-                <div id="qphysics" class="collapse">
-                    Coming Soon.
+
+                <div class="section">
+                    <h2>QI &amp; Physics</h2>
+                    <ul class="note-list" id="qphysics">
+                        <li><span class="note-pending">Coming soon</span></li>
+                    </ul>
+                </div>
+                -->
+
+                <div class="page-footer">
+                    <!--<p>Your footnote text goes here.</p>-->
                 </div>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
