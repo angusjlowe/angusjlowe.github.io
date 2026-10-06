@@ -34,7 +34,7 @@
             <div class="col-md-5">
                 <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
                     <span><a class="nav-item" href="./folklore.html">Folklore on Qubits</a></span>
-                    <span class="masthead-meta">Last updated: 09/05/2026</span>
+                    <span class="masthead-meta">Last updated: 10/05/2026</span>
                 </div>
             </div>
         </div>
@@ -84,6 +84,12 @@
                     <p class="section-note">Author ordering is alphabetical. For a complete list of publications and preprints, click <a href="https://scholar.google.ca/citations?user=SlJxsUcAAAAJ&amp;hl=en">here</a>.</p>
 
                     <ul class="entry-list">
+                        <li>
+                            <span class="entry-title">The power of time reversal in Hamiltonian property testing</span>
+                            <span class="entry-links">[<a href="https://arxiv.org/abs/2610.04996">arXiv</a>]</span>
+                            <br>
+                            <span class="entry-authors">Richard R. Allen, Matthias C. Caro, Yanlin Chen, Tom Gur, <span class="self">Angus Lowe</span></span>
+                        </li>
                         <li>
                             <span class="entry-title">Random dimension reduction and learning symmetric properties of quantum states</span>
                             <span class="entry-links">[<a href="https://arxiv.org/abs/2606.23592">arXiv</a>]</span>
@@ -211,13 +217,38 @@
                 </div>
 
                 <div class="page-footer">
-                    <a href="https://open.spotify.com/album/3LAherx4Gg7LCOWQo25lBK?si=i3N6IOz4TRavT6qw7w_veg">mystery album (sep)</a> &middot; <a href="/files/ski_the_east.mp4">ski the east</a> &middot; <a href="/files/zion.jpg">ooh ahh</a>
+                    <a id="album-link" href="https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=LMNqA3zBQ1SfkNbNxLoGVg" target="_blank" rel="noopener">mystery album</a> &middot; <a href="/files/ski_the_east.mp4">ski the east</a> &middot; <a href="/files/zion.jpg">ooh ahh</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const albums = [
+            "https://open.spotify.com/album/6YUCc2RiXcEKS9ibuZxjt0?si=LMNqA3zBQ1SfkNbNxLoGVg",
+            "https://open.spotify.com/album/5jgI8Eminx9MmLBontDWq8?si=Bm2PPK46SOi3uRPPCgYRjw",
+            "https://open.spotify.com/album/5oSVYKZLKGCmwYqmJ7AZnO?si=sifhUwOjT5eTdYCuRNfiQw",
+            "https://open.spotify.com/album/7wKVcBB5SgqVX3Cj3LPllE?si=e-vlhqMUTu-bO9VxWGkmGQ",
+            "https://open.spotify.com/album/3Z0qQc09rmk4JYtIaxEx2J?si=36GBWyJNTgqRrAmuJrP59w",
+            "https://open.spotify.com/album/3Z72KfamjH9Wc5m9mgVqI7?si=-INzTwrPS1qBWBSf8EHuHw",
+            "https://open.spotify.com/album/4WoQ94qzwQj28n3nlSOVLB?si=1z97Co0lQF-OiXiJThhvZw",
+            "https://open.spotify.com/album/731OW49heGHCMrMOREHYlY?si=cK4N5Y-4ScuB0kJyq-lQbg",
+            "https://open.spotify.com/album/5kV0KBXfELibs6qQJLmOtg?si=EpoSe-xcTjmKPHxS3NBGOQ",
+            "https://open.spotify.com/album/6tcv9H1TNubc9o0gy2eIAG?si=PKXWi1C7TrSaocNMmTs_-w",
+            "https://open.spotify.com/album/6cx4GVNs03Pu4ZczRnWiLd?si=HNfUUcRZSnSv6tvuazP2qw",
+            "https://open.spotify.com/album/7huPJTTsWVt854oZkr88mf?si=xod2p9caR32aH4EsMnOAkQ",
+            "https://open.spotify.com/album/2cKZfaz7GiGtZEeQNj1RyR?si=t1wjfng_S26okccBbbYtvw",
+            "https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa?si=xR4PZMlqTb6500N5qMd3sA",
+            "https://open.spotify.com/album/2yImgiwCG9KZnxzgulVthl?si=rB70ZzXcSgis8jKJNhZFyw",
+            "https://open.spotify.com/album/55RhFRyQFihIyGf61MgcfV?si=RnsWGcwISaG85FPhsJlGrw",
+            "https://open.spotify.com/album/185DHT5SvszXRrezx3lOjt?si=U0PZsBGKRNanz-PL8umg5A"
+        ];
+        const link = document.getElementById("album-link");
+        link.addEventListener("pointerdown", () => {
+            link.href = albums[Math.floor(Math.random() * albums.length)];
+        });
+    </script>
 </body>
 
 </html>

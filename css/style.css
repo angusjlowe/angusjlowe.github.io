@@ -360,11 +360,11 @@ hr {
   color: var(--ink-soft);
 }
 
-/*.self {
-  font-weight: 200;
+.self {
+  font-weight: 400;
   color: var(--ink);
   font-style: normal;
-}*/
+}
 
 .entry-venue {
   font-size: 0.85rem;
@@ -525,7 +525,7 @@ hr {
   padding-top: 1.25rem;
   padding-bottom: 3.5rem;
   border-top: 1px solid var(--rule);
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   line-height: 1.7;
   color: var(--ink-faint);
 }
