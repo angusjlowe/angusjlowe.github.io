@@ -1,6 +1,6 @@
 /* ============================================================
    Angus Lowe — site styles
-   Shared by index.html and folklore.html.
+   Shared by index.html, folklore.html and the posts in folklore/.
    All original selectors are preserved; new ones are additive.
    ============================================================ */
 
@@ -537,4 +537,83 @@ hr {
 
 .page-footer p:last-child {
   margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   Folklore posts — folklore/<topic>/<slug>.html
+   Scoped to .post so the index's label-style h2 is untouched.
+   ------------------------------------------------------------ */
+
+/* On a post, the current-page marker doubles as the link back to the
+   index; it already carries its own underline, so skip the hover one. */
+a.nav-current:hover {
+  color: var(--sage-deep);
+  text-decoration: none;
+}
+
+.post h1 {
+  margin-bottom: 0.9em;
+}
+
+/* Article section headings: set in the display face, not as labels. */
+.post h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  text-transform: none;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  margin: 2.25rem 0 0.6em;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* References & footnotes: the same small-caps label as the index sections. */
+.post h3 {
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  margin: 3rem 0 1.1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-refs {
+  padding-left: 1.25em;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.post-refs > li {
+  padding-bottom: 0.5em;
+}
+
+/* Each img keeps its intended width inline; max-width lets it shrink. */
+.post-figure {
+  margin: 1.75rem auto;
+  text-align: center;
+}
+
+.post-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 0.75em;
+}
+
+.post-figure figcaption {
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+/* Long aligned equations scroll within the column on narrow screens. */
+.post mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
 }

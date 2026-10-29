@@ -1,38 +1,69 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Angus Lowe is a PhD student in physics at MIT focusing on quantum information science.">
+    <meta name="description" content="A simple Hamiltonian that needs Ω(n) gates to simulate deterministically but only O(1) gates with randomized compilation.">
+    <title>Randomized Compilation | Folklore on Qubits</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <title>Angus Lowe | MIT</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Inter:ital,opsz,wght@0,14..32,200..600;1,14..32,200..600&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="../../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/academicons.min.css"/>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-
-<body id="#top">
-    <div class="container pt-5">
+<body id="top">
+    <!-- Navbar -->
+    <div class="container pt-4 masthead">
         <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div style="display: flex; justify-content: space-between;">
-                    <span><a href="../../folklore.html">Back</a></span>
-                    <span style="font-style: italic;">Last Updated: 03/26/2026</span>
+            <!-- Keep the original spacer -->
+            <div class="col-md-3">
+                <br>
+            </div>
+
+            <!-- Keep About exactly where it was -->
+            <div class="col-md-1">
+                <span><a class="nav-item" href="../../index.html">About</a></span>
+            </div>
+
+            <!-- Keep the original title width, but split it internally -->
+            <div class="col-md-5">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
+                    <a class="nav-current" href="../../folklore.html">Folklore on Qubits</a>
+                    <span class="masthead-meta">Last updated: 03/26/2026</span>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+            </div>
+            <div class="col-md-6">
                 <hr>
-                <h1 style="text-align: center;">Randomized Compilation</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container pt-2">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+            </div>
+            <article class="col-md-6 prose post">
+                <h1>Randomized Compilation</h1>
                 <p>
                     A growing body of work in the last few years points to randomization being a powerful tool for simulating quantum processes. For example, the fact that one can use a linear combination of noisy quantum channels to simulate the action of a unitary is the basis for the probabilistic error cancellation method in error mitigation. However, this is an example where noise is used to counteract noise, and the improvements gained are necessarily modest. Perhaps more strikingly, randomness can also sometimes give dramatically improved methods in the noise-free setting where one wishes to simulate unitaries with other unitaries. For instance, it has recently been shown<sup><a href="#gkz25">1</a></sup> that an n-qubit Toffoli gate can be implemented with exponentially fewer T gates using randomly drawn circuits, and other works<sup><a href="#Cam17">2</a></sup><sup>,</sup><sup><a href="#CHKT21">3</a></sup> draw attention to randomization reducing Trotter steps in Hamiltonian simulation. While we are used to thinking of uniquely quantum phenomena (e.g., entanglement) as resources for improving classical information processing tasks, these examples flip the script on this mantra: in the physically realistic setting of limited coherent control, classical randomness can be a resource for quantum information processing tasks.
                 </p>
                 <p>
                     In this note, I wanted to record my understanding of a clean example of the phenomenon that has been noted elsewhere<sup><a href="#CHKT21">3</a></sup>. Without being too precise for the moment, the claim is as follows.
                 </p>
-                <p>
-                    <blockquote>There is a simple, physically realistic Hamiltonian $H$ which requires $\Omega(n)$ unitary gates to simulate to constant accuracy, but only $O(1)$ gates if one allows for randomness.</blockquote>
-                </p>
+                <blockquote>There is a simple, physically realistic Hamiltonian $H$ which requires $\Omega(n)$ unitary gates to simulate to constant accuracy, but only $O(1)$ gates if one allows for randomness.</blockquote>
                 <p>
                     Suppose that one's goal is to implement the gate
                     $$
@@ -116,19 +147,16 @@
                     and in order to attain error $\epsilon$ in diamond error, it suffices to take $m=\Theta(\epsilon^{-1})$. Hence, for sufficiently small error, $m=\Omega(n)$ gates are required deterministically while $m=O(1)$ suffices if one uses randomness.
                 </p>
                 <h3>References & Footnotes</h3>
-                <ol>  
+                <ol class="post-refs">
                     <li id="gkz25">D. Gosset, R. Kothari, and C. Zhang. "Multi-qubit Toffoli with exponentially fewer T gates". arXiv:2510.07223.</li>
                     <li id="Cam17">E. Campbell. "A random compiler for fast Hamiltonian simulation". <i>Physical Review Letters</i> 123, 070503 (2019).</li>
                     <li id="CHKT21">C. Chen, H. Huang, R. Kueng, and J. Tropp. "Concentration for Random Product Formulas". <i>PRX Quantum</i> 2, 040305 (2021).</li>
                     <li id="footnote">This is left as a (non-trivial) exercise to the reader, mainly involving adding and subtracting terms and Hölder's inequality.</li>
                 </ol>
-                <hr>
-                <a href="#top">Top</a>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
+                <div class="page-footer">
+                    <a href="#top">Back to top</a> &middot; <a href="../../folklore.html">All notes</a>
+                </div>
+            </article>
         </div>
     </div>
     
