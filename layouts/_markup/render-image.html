@@ -1,0 +1,17 @@
+{{- /* An image on its own line becomes a figure: the Markdown title is the
+       caption, and {width="30em"} on the next line sets its display width. */ -}}
+{{- $src := .Destination -}}
+{{- $u := urls.Parse .Destination -}}
+{{- if not $u.IsAbs -}}
+  {{- with .PageInner.Resources.Get $u.Path -}}{{ $src = .RelPermalink }}{{- end -}}
+{{- end -}}
+{{- if .IsBlock -}}
+<figure class="post-figure">
+    <img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Attributes.width }} style="width:{{ . | safeCSS }};"{{ end }}>
+    {{- with .Title }}
+    <figcaption>{{ . }}</figcaption>
+    {{- end }}
+</figure>
+{{- else -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- end -}}

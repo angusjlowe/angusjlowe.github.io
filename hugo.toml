@@ -1,0 +1,51 @@
+baseURL = "https://angusjlowe.github.io/"
+locale = "en"
+title = "Angus Lowe"
+
+# No tag/category pages.
+disableKinds = ["taxonomy", "term"]
+
+# "Last updated" comes from a page's `lastmod` front matter if present,
+# otherwise from the date of the last git commit that touched the file.
+enableGitInfo = true
+[frontmatter]
+  lastmod = ["lastmod", ":git", ":default"]
+
+[markup.goldmark.renderer]
+  # Allow raw HTML in posts (e.g. a <div> pasted from elsewhere).
+  unsafe = true
+
+[markup.goldmark.parser]
+  # A standalone image becomes a <figure>; see layouts/_markup/render-image.html.
+  wrapStandAloneImageWithinParagraph = false
+  [markup.goldmark.parser.attribute]
+    # Allows {.note} or {width="30em"} on the line after a paragraph or image.
+    block = true
+
+# Hand TeX to MathJax untouched, so _ * \\ \{ inside math aren't read as Markdown.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
+
+[params]
+  description = "Angus Lowe is a PhD candidate in physics at MIT focusing on quantum information science."
+
+  # Section order on the Folklore index. A post picks one with `topic: <key>`.
+  # Topics without any published posts are hidden.
+  [[params.folkloreTopics]]
+    key = "qec"
+    name = "Quantum Error Correction"
+  [[params.folkloreTopics]]
+    key = "qit"
+    name = "Quantum Information Theory"
+  [[params.folkloreTopics]]
+    key = "qalgs"
+    name = "Quantum Algorithms"
+  [[params.folkloreTopics]]
+    key = "qlt"
+    name = "Quantum Learning Theory"
+  [[params.folkloreTopics]]
+    key = "qphysics"
+    name = "QI & Physics"

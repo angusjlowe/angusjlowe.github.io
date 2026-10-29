@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+    {{- if .IsHome }}
+    <title>{{ site.Title }}</title>
+    {{- else if .IsSection }}
+    <title>{{ .Title }} | {{ site.Title }}</title>
+    {{- else }}
+    <title>{{ .Title }} | {{ .CurrentSection.Title }}</title>
+    {{- end }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Inter:ital,opsz,wght@0,14..32,200..600;1,14..32,200..600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {{- if .IsHome }}
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{{ "css/academicons.min.css" | relURL }}">
+    {{- end }}
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    {{- if eq .Section "folklore" }}
+    {{- with (site.GetPage "/folklore").OutputFormats.Get "rss" }}
+    <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="Folklore on Qubits">
+    {{- end }}
+    {{- end }}

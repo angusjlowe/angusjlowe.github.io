@@ -1,0 +1,53 @@
+{{- $folklore := site.GetPage "/folklore" -}}
+{{- /* A section shows the date of its own last edit or its newest post edit, whichever is later. */ -}}
+{{- $lastmod := .Lastmod -}}
+{{- if .IsSection }}
+  {{- range first 1 .RegularPages.ByLastmod.Reverse }}
+    {{- if .Lastmod.After $lastmod }}{{ $lastmod = .Lastmod }}{{ end }}
+  {{- end }}
+{{- end -}}
+<!-- Navbar -->
+    <div class="container pt-4 masthead">
+        <div class="row">
+            <!-- Keep the original spacer -->
+            <div class="col-md-3">
+                <br>
+            </div>
+
+            <!-- Keep About exactly where it was -->
+            <div class="col-md-1">
+                {{- if .IsHome }}
+                <span class="nav-current">About</span>
+                {{- else }}
+                <span><a class="nav-item" href="{{ site.Home.RelPermalink }}">About</a></span>
+                {{- end }}
+            </div>
+
+            <!-- Keep the original title width, but split it internally -->
+            <div class="col-md-5">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; width: 100%;">
+                    {{- if eq .Section "folklore" }}
+                    {{- if .IsSection }}
+                    <span class="nav-current">{{ $folklore.Title }}</span>
+                    {{- else }}
+                    <a class="nav-current" href="{{ $folklore.RelPermalink }}">{{ $folklore.Title }}</a>
+                    {{- end }}
+                    {{- else }}
+                    <span><a class="nav-item" href="{{ $folklore.RelPermalink }}">{{ $folklore.Title }}</a></span>
+                    {{- end }}
+                    <span class="masthead-meta">Last updated: {{ $lastmod.Format "01/02/2006" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+            </div>
+            <div class="col-md-6">
+                <hr>
+            </div>
+        </div>
+    </div>

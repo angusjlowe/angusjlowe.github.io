@@ -1,6 +1,6 @@
 /* ============================================================
    Angus Lowe — site styles
-   Shared by index.html, folklore.html and the posts in folklore/.
+   Shared by every page; the HTML lives in layouts/ and content/.
    All original selectors are preserved; new ones are additive.
    ============================================================ */
 
@@ -540,7 +540,7 @@ hr {
 }
 
 /* ------------------------------------------------------------
-   Folklore posts — folklore/<topic>/<slug>.html
+   Folklore posts — content/folklore/<slug>/index.md
    Scoped to .post so the index's label-style h2 is untouched.
    ------------------------------------------------------------ */
 
@@ -569,26 +569,47 @@ a.nav-current:hover {
   border-bottom: 0;
 }
 
-/* References & footnotes: the same small-caps label as the index sections. */
-.post h3 {
+/* References & footnotes, generated from Markdown [^name] markers.
+   Headed by the same small-caps label as the index sections. */
+.post .footnotes {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.post .footnotes::before {
+  content: "References & Footnotes";
+  display: block;
   font-weight: 500;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
-  margin: 3rem 0 1.1em;
+  margin-bottom: 1.1em;
   padding-bottom: 0.5em;
   border-bottom: 1px solid var(--rule);
 }
 
-.post-refs {
-  padding-left: 1.25em;
-  font-size: 0.9rem;
-  color: var(--ink-soft);
+.post .footnotes > hr {
+  display: none;
 }
 
-.post-refs > li {
+.post .footnotes ol {
+  padding-left: 1.25em;
+  margin: 0;
+}
+
+.post .footnotes li {
   padding-bottom: 0.5em;
+}
+
+.post .footnotes li p {
+  margin: 0;
+}
+
+.post .footnote-backref {
+  margin-left: 0.2em;
+  text-decoration: none;
 }
 
 /* Each img keeps its intended width inline; max-width lets it shrink. */
