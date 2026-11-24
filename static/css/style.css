@@ -384,6 +384,114 @@ hr {
 
 
 /* ------------------------------------------------------------
+   Talks — dates aligned beside venues, titles and resources
+   ------------------------------------------------------------ */
+
+.talks-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  line-height: 1.5;
+}
+
+.talks-table tr {
+  break-inside: avoid;
+}
+
+.talks-collapsed tbody > tr:nth-child(n + 6) {
+  display: none;
+}
+
+.talks-toggle {
+  display: block;
+  margin: 0.25rem 0 0 6rem;
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--sage-deep);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.talks-toggle:hover {
+  color: var(--sage);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.talks-toggle:focus-visible {
+  outline: 2px solid var(--sage-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.talks-table tbody tr + tr {
+  border-top: 1px solid var(--rule);
+}
+
+.talks-table th,
+.talks-table td {
+  padding: 0.85rem 0;
+  vertical-align: top;
+}
+
+.talk-date-column {
+  width: 6rem;
+}
+
+.talks-table .talk-date {
+  padding-right: 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.talk-date time {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.talk-type,
+.talk-status {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+}
+
+.talk-type {
+  font-style: italic;
+}
+
+.talk-status {
+  color: var(--sage-deep);
+  font-weight: 500;
+}
+
+.talk-title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.talk-venue {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.talk-details .entry-links {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+}
+
+
+/* ------------------------------------------------------------
    Teaching
    ------------------------------------------------------------ */
 

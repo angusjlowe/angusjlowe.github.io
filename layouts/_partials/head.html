@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="{{ "css/academicons.min.css" | relURL }}">
     {{- end }}
-    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    {{- /* Changing the URL with the CSS content prevents stale cached styles. */}}
+    {{- $styleVersion := os.ReadFile "static/css/style.css" | crypto.SHA256 }}
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}?v={{ $styleVersion }}">
     {{- if eq .Section "folklore" }}
     {{- with (site.GetPage "/folklore").OutputFormats.Get "rss" }}
     <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="Folklore on Qubits">
