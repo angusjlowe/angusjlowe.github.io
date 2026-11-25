@@ -440,6 +440,10 @@ hr {
   width: 6rem;
 }
 
+.talk-location {
+  font-style: italic;
+}
+
 .talks-table .talk-date {
   padding-right: 1rem;
   text-align: left;
@@ -470,7 +474,7 @@ hr {
 }
 
 .talk-title {
-  display: block;
+  display: inline;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--ink);
@@ -486,7 +490,6 @@ hr {
 
 .talk-details .entry-links {
   display: inline-block;
-  margin-top: 0.25rem;
   font-size: 0.8rem;
 }
 
